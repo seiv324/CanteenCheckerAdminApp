@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">CanteenCheckerAdminApp</string>
+    <string name="hint_user_name">Username</string>
+    <string name="hint_password">Passwort</string>
+    <string name="text_log_in">Log In</string>
+</resources>
