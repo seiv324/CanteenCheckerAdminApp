@@ -5,12 +5,12 @@ plugins {
 
 android {
     namespace 'com.example.canteenchecker.adminapp'
-    compileSdk 32
+    compileSdk 33
 
     defaultConfig {
         applicationId "com.example.canteenchecker.adminapp"
         minSdk 26
-        targetSdk 32
+        targetSdk 33
         versionCode 1
         versionName "1.0"
 
@@ -41,9 +41,15 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.4'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0'
 
+    //Androidx
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
+
     //Retrofit
     def retrofit_version = '2.9.0'
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
     implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
     implementation "com.squareup.retrofit2:converter-scalars:$retrofit_version"
+
+    //KTX
+    implementation 'androidx.activity:activity-ktx:1.6.1'
 }

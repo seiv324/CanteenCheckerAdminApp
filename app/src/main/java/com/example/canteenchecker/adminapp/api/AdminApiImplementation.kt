@@ -134,14 +134,14 @@ private class AdminApiImplementation(apiBaseUrl: String) : AdminApi{
         }
 
     override suspend fun getCanteen(authenticationToken: String): Result<CanteenDetails> = apiCall {
-        getCanteen(authenticationToken)
+        getCanteen("Bearer $authenticationToken")
     }.convert { CanteenDetails(name, phoneNumber, website, dish, dishPrice, address, waitingTime) }
 
     override suspend fun updateCanteenData(
         authenticationToken: String,
         updateParameters: CanteenUpdateParameters
     ): Result<Unit> = apiCall{
-        updateDataForCanteen(authenticationToken, updateParameters.name, updateParameters.address, updateParameters.website, updateParameters.phoneNumber)
+        updateDataForCanteen("Bearer $authenticationToken", updateParameters.name, updateParameters.address, updateParameters.website, updateParameters.phoneNumber)
     }.convert { }
 
     override suspend fun updateDish(
@@ -149,26 +149,26 @@ private class AdminApiImplementation(apiBaseUrl: String) : AdminApi{
         dishName: String,
         dishPrice: Double
     ): Result<Unit> = apiCall{
-        updateDataCanteenDish(authenticationToken, dishName, dishPrice)
+        updateDataCanteenDish("Bearer $authenticationToken", dishName, dishPrice)
     }.convert{ }
 
     override suspend fun updateWaitingTime(
         authenticationToken: String,
         waitingTime: Int
     ): Result<Unit> = apiCall{
-        updateWaitingTimeCanteen(authenticationToken, waitingTime)
+        updateWaitingTimeCanteen("Bearer $authenticationToken", waitingTime)
     }.convert {  }
 
     override suspend fun getReviewStatisticsForCanteen(authenticationToken: String): Result<ReviewData> = apiCall {
-        getReviewStatisticsForCanteen(authenticationToken)
+        getReviewStatisticsForCanteen("Bearer $authenticationToken")
     }.convert { ReviewData(countOneStar, countTwoStars, countThreeStars, countFourStars, countFiveStars) }
 
     override suspend fun getReviewsForCanteen(authenticationToken: String): Result<List<ReviewEntry>> = apiCall {
-        getReviewsForCanteen(authenticationToken)
+        getReviewsForCanteen("Bearer $authenticationToken")
     }.convertEach { ReviewEntry(id, LocalDateTime.parse(creationDate), creator, rating, remark )  }
 
     override suspend fun deleteReview(authenticationToken: String, reviewId: String): Result<Unit> = apiCall {
-        deleteReviewForCanteen(authenticationToken, reviewId)
+        deleteReviewForCanteen("Bearer $authenticationToken", reviewId)
     }.convert{}
 
 }
