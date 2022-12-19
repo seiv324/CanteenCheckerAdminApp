@@ -6,4 +6,11 @@
     <string name="text_log_in">Login</string>
     <string name="message_login_failed">Login fehlgeschlagen, bitte versuchen Sie es erneut!</string>
     <string name="message_canteen_not_found">Cantine konnte nicht gefunden werden</string>
+    <string name="hint_filter">Filter</string>
+    <string name="text_search">Suche</string>
+    <string name="message_loading_reviews_failed">Reviews konnten nicht geladen werden</string>
+    <string name="message_delete_review_failed">Review konnte nicht gelöscht werden</string>
+    <string name="message_delete_review_success">Review wurde gelöscht</string>
+    <string name="message_update_canteen_failure">Canteen Update fehlgeschlagen</string>
+    <string name="message_update_canteen_success">Canteen wurde upgedated</string>
 </resources>

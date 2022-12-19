@@ -45,6 +45,6 @@ class ReviewEntry(
     val id: String,
     val creationDate: LocalDateTime,
     val creator: String,
-    val rating: Int,
+    val rating: Float,
     val remark: String
 )

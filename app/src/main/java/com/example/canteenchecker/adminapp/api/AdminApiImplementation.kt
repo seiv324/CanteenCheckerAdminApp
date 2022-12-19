@@ -64,7 +64,8 @@ private class AdminApiImplementation(apiBaseUrl: String) : AdminApi{
                                           @Query("dishPrice") dishPrice: Double) : Response<Unit>
 
         @PUT("canteen/waiting-time")
-        suspend fun updateWaitingTimeCanteen(@Header("Authorization")  authenticationToken: String, @Query("waitingTime") waitingTime: Int) : Response<Unit>
+        suspend fun updateWaitingTimeCanteen(@Header("Authorization")  authenticationToken: String,
+                                             @Query("waitingTime") waitingTime: Int) : Response<Unit>
 
         @GET("canteen/reviews")
         suspend fun getReviewsForCanteen(@Header("Authorization")  authenticationToken: String) : List<ApiReviewDetail>
@@ -104,7 +105,7 @@ private class AdminApiImplementation(apiBaseUrl: String) : AdminApi{
         val id: String,
         val creationDate: String,
         val creator: String,
-        val rating: Int,
+        val rating: Float,
         val remark: String
     )
 

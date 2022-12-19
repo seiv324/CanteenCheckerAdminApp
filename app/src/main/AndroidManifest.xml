@@ -15,7 +15,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CanteenCheckerAdminApp"
         tools:targetApi="31">
-
         <activity
             android:name=".ui.AdminLoginActivity"
             android:exported="true">
@@ -29,9 +28,15 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-
         <activity
             android:name=".ui.CanteenDetailActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".ui.ReviewsActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

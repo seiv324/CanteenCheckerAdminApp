@@ -21,11 +21,27 @@
             android:layout_height="wrap_content"
             android:text="Canteen Name" />
 
+        <EditText
+            android:id="@+id/edtDetailName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/distance_very_small"
+            android:autofillHints="password"
+            android:inputType="text"/>
+
         <TextView
             android:id="@+id/canteenDetailAddressTxtField"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Canteen address" />
+
+        <EditText
+            android:id="@+id/edtDetailAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/distance_very_small"
+            android:autofillHints="password"
+            android:inputType="text"/>
 
         <TextView
             android:id="@+id/canteenDetailPhoneNumberTxtField"
@@ -33,11 +49,27 @@
             android:layout_height="wrap_content"
             android:text="Phone Number" />
 
+        <EditText
+            android:id="@+id/edtDetailPhoneNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/distance_very_small"
+            android:autofillHints="password"
+            android:inputType="text"/>
+
         <TextView
             android:id="@+id/canteenDetailWebsiteTxtField"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Website" />
+
+        <EditText
+            android:id="@+id/edtDetailWebsite"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/distance_very_small"
+            android:autofillHints="password"
+            android:inputType="text"/>
 
         <TextView
             android:id="@+id/canteenDetailDishTxtField"
@@ -45,11 +77,27 @@
             android:layout_height="wrap_content"
             android:text="Dish Detail" />
 
+        <EditText
+            android:id="@+id/edtDetailDish"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/distance_very_small"
+            android:autofillHints="password"
+            android:inputType="text"/>
+
         <TextView
             android:id="@+id/canteenDetailDishPriceTxtField"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Dish Price" />
+
+        <EditText
+            android:id="@+id/edtDetailDishPrice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/distance_very_small"
+            android:autofillHints="password"
+            android:inputType="text"/>
 
         <TextView
             android:id="@+id/canteenDetailWaitingTimeTxtField"
@@ -61,12 +109,18 @@
             android:id="@+id/updateCanteenButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Button Canteen" />
+            android:text="Update Canteen" />
 
         <Button
             android:id="@+id/updateDishButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Button Dish" />
+            android:text="Update Dish" />
+
+        <Button
+            android:id="@+id/showReviews"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Show Reviews" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
