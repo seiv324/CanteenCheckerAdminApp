@@ -84,6 +84,7 @@ private class AdminApiImplementation(apiBaseUrl: String) : AdminApi{
     )
 
     private class ApiCanteenDetails(
+        val id: String,
         val name: String,
         val address: String,
         val phoneNumber: String,
@@ -136,7 +137,7 @@ private class AdminApiImplementation(apiBaseUrl: String) : AdminApi{
 
     override suspend fun getCanteen(authenticationToken: String): Result<CanteenDetails> = apiCall {
         getCanteen("Bearer $authenticationToken")
-    }.convert { CanteenDetails(name, phoneNumber, website, dish, dishPrice, address, waitingTime) }
+    }.convert { CanteenDetails(id, name, phoneNumber, website, dish, dishPrice, address, waitingTime) }
 
     override suspend fun updateCanteenData(
         authenticationToken: String,

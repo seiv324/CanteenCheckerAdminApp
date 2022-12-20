@@ -11,6 +11,7 @@ class Canteen(
 )
 
 class CanteenDetails(
+    val id: String,
     val name: String,
     val phoneNumber: String,
     val website: String,

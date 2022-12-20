@@ -14,20 +14,30 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-import com.example.canteenchecker.adminapp.CanteenCheckerAdminApplication
-import com.example.canteenchecker.adminapp.R
+import com.example.canteenchecker.adminapp.*
 import com.example.canteenchecker.adminapp.api.AdminApiFactory
 import com.example.canteenchecker.adminapp.core.ReviewEntry
 import com.example.canteenchecker.adminapp.utils.SwipeToDeleteCallback
 import kotlinx.coroutines.launch
 
 class ReviewsActivity : AppCompatActivity() {
+    // Create receiver since it is a abstract class
+    private val receiver = object: CanteenChangedBroadcastReceiver() {
+        override fun onReceiveCanteenChanged(canteenId: String) {
+            if(currentCanteenId == canteenId ){
+                updateReviews()
+            }
+        }
+    }
+
     private val reviewsAdapter = ReviewsAdapter()
 
     private lateinit var swipeLayout: SwipeRefreshLayout
     private lateinit var rcvReviews: RecyclerView
 
     private lateinit var authenticationToken : String
+    private lateinit var currentCanteenId : String
+
 
     companion object{
         fun intent(context: Context) : Intent =
@@ -39,6 +49,7 @@ class ReviewsActivity : AppCompatActivity() {
         setContentView(R.layout.activity_reviews)
 
         authenticationToken = (application as CanteenCheckerAdminApplication).authenticationToken ?: ""
+        currentCanteenId = ""
 
         swipeLayout = findViewById(R.id.srlSwipeRefreshLayout)
         rcvReviews = findViewById(R.id.rcvReviews)
@@ -61,7 +72,15 @@ class ReviewsActivity : AppCompatActivity() {
         val itemTouchHelper = ItemTouchHelper(swipeHandler)
         itemTouchHelper.attachToRecyclerView(rcvReviews)
 
+        // Register for Reviews Updates
+        registerCanteenChangedBroadcastReceiver(receiver)
+
         updateReviews()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        unregisterCanteenChangedBroadcastReceiver(receiver)
     }
 
     private fun updateReviews() = lifecycleScope.launch {
