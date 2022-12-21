@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="409dp"
+        android:layout_height="729dp"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="1dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <Button
+            android:id="@+id/goToUpdateCanteenButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Goto Update Canteen Details" />
+
+        <Button
+            android:id="@+id/updateDishButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Update Dish Details" />
+
+        <Button
+            android:id="@+id/updateWaitingTimeButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Update Waiting Time" />
+
+        <Button
+            android:id="@+id/showReviews"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Show Reviews" />
+
+        <TextView
+            android:id="@+id/overviewCanteenName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Canteen Name" />
+
+        <TextView
+            android:id="@+id/overviewCanteenAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Canteen Address" />
+
+        <TextView
+            android:id="@+id/overviewCanteenWebsite"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Canteen Website" />
+
+        <TextView
+            android:id="@+id/overviewCanteenPhone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Canteen Phone" />
+
+
+        <TextView
+            android:id="@+id/overviewCanteenWaitingTime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Canteen WaitingTime" />
+
+        <TextView
+            android:id="@+id/overviewCanteenDish"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Canteen Dish" />
+
+        <TextView
+            android:id="@+id/overviewCanteenDishPrice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Canteen DishPrice" />
+
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/fcwReviews"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -14,4 +14,9 @@
     <string name="message_update_canteen_failure">Canteen Update fehlgeschlagen</string>
     <string name="message_update_canteen_success">Canteen wurde upgedated</string>
     <string name="dish_label">Gericht Name</string>
+    <string name="text_five">5</string>
+    <string name="text_four">4</string>
+    <string name="text_three">3</string>
+    <string name="text_two">2</string>
+    <string name="text_one">1</string>
 </resources>
