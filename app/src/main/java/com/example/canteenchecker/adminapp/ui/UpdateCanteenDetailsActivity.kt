@@ -5,6 +5,8 @@ import android.content.Intent
 import android.location.Geocoder
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
@@ -58,8 +60,8 @@ class UpdateCanteenDetailsActivity : AppCompatActivity() {
         setContentView(R.layout.activity_update_canteen_details)
 
         // Get App Information for canteen
-        authenticationToken = (application as CanteenCheckerAdminApplication).authenticationToken ?: ""
-        currentCanteenId = (application as CanteenCheckerAdminApplication).canteenId ?: ""
+        authenticationToken = (application as CanteenCheckerAdminApplication).authenticationToken
+        currentCanteenId = (application as CanteenCheckerAdminApplication).canteenId
 
         // Get XML Elements
         edtName = findViewById(R.id.editCanteenUpdateName)
@@ -107,7 +109,7 @@ class UpdateCanteenDetailsActivity : AppCompatActivity() {
     }
 
     private fun loadCanteenDetails() = lifecycleScope.launch{
-        if(authenticationToken != null){
+        if(authenticationToken.isNotBlank()){
             AdminApiFactory.createAdminApiInstance().getCanteen(authenticationToken)
                 .onFailure {
                     Toast.makeText(this@UpdateCanteenDetailsActivity, R.string.message_canteen_not_found, Toast.LENGTH_LONG
@@ -158,7 +160,7 @@ class UpdateCanteenDetailsActivity : AppCompatActivity() {
             edtPhone.text.toString()
         )
 
-        if(authenticationToken != null && authenticationToken.isNotBlank()) {
+        if(authenticationToken.isNotBlank()) {
             AdminApiFactory.createAdminApiInstance()
                 .updateCanteenData(authenticationToken, canteenToUpdate)
                 .onFailure {
@@ -178,5 +180,36 @@ class UpdateCanteenDetailsActivity : AppCompatActivity() {
                     finish()
                 }
         }
+    }
+
+    // Prepare Options Menu
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_activity_admin_canteen_details, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onPrepareOptionsMenu(menu: Menu?): Boolean {
+        menu?.findItem(R.id.mniLogout)?.isVisible = true
+        menu?.findItem(R.id.mniOverview)?.isVisible = true
+        menu?.findItem(R.id.mniDetails)?.isVisible = false
+        menu?.findItem(R.id.mniReviews)?.isVisible = false
+        return super.onPrepareOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean  =  when(item.itemId){
+        R.id.mniLogout -> logoutUser().let { true }
+        R.id.mniOverview -> navigateToOverview().let { true }
+        else -> super.onOptionsItemSelected(item)
+    }
+
+    private fun logoutUser() {
+        if(authenticationToken.isNotBlank()){
+            (application as CanteenCheckerAdminApplication).authenticationToken = ""
+            startActivity(AdminLoginActivity.intent(this))
+        }
+    }
+
+    private fun navigateToOverview(){
+        startActivity(CanteenOverviewActivity.intent(this))
     }
 }

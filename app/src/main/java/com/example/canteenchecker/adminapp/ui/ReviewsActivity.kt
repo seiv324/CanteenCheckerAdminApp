@@ -4,9 +4,7 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.RatingBar
 import android.widget.TextView
 import android.widget.Toast
@@ -48,7 +46,7 @@ class ReviewsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_reviews)
 
-        authenticationToken = (application as CanteenCheckerAdminApplication).authenticationToken ?: ""
+        authenticationToken = (application as CanteenCheckerAdminApplication).authenticationToken
         currentCanteenId = ""
 
         swipeLayout = findViewById(R.id.srlSwipeRefreshLayout)
@@ -140,5 +138,36 @@ class ReviewsActivity : AppCompatActivity() {
 
         fun getReviewFromPosition(position: Int) : ReviewEntry = reviewEntries[position]
 
+    }
+
+    // Prepare Options Menu
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_activity_admin_canteen_details, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onPrepareOptionsMenu(menu: Menu?): Boolean {
+        menu?.findItem(R.id.mniLogout)?.isVisible = true
+        menu?.findItem(R.id.mniOverview)?.isVisible = true
+        menu?.findItem(R.id.mniDetails)?.isVisible = false
+        menu?.findItem(R.id.mniReviews)?.isVisible = false
+        return super.onPrepareOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean  =  when(item.itemId){
+        R.id.mniLogout -> logoutUser().let { true }
+        R.id.mniOverview -> navigateToOverview().let { true }
+        else -> super.onOptionsItemSelected(item)
+    }
+
+    private fun logoutUser() {
+        if(authenticationToken.isNotBlank()){
+            (application as CanteenCheckerAdminApplication).authenticationToken = ""
+            startActivity(AdminLoginActivity.intent(this))
+        }
+    }
+
+    private fun navigateToOverview(){
+        startActivity(CanteenOverviewActivity.intent(this))
     }
 }

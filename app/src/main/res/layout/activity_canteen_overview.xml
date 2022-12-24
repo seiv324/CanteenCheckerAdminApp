@@ -14,72 +14,206 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+        <!--
         <Button
             android:id="@+id/goToUpdateCanteenButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Goto Update Canteen Details" />
-
+        -->
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="2">
         <Button
             android:id="@+id/updateDishButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Update Dish Details" />
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:text="@string/update_dish_details"
+            android:layout_weight="1"
+            android:layout_margin="@dimen/button_margin_small"
+            style="?android:attr/buttonBarButtonStyle" />
 
         <Button
             android:id="@+id/updateWaitingTimeButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Update Waiting Time" />
-
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:text="@string/update_waiting_time"
+            android:layout_weight="1"
+            style="?android:attr/buttonBarButtonStyle"
+            />
+    </LinearLayout>
+        <!--
         <Button
             android:id="@+id/showReviews"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Show Reviews" />
+        -->
 
-        <TextView
-            android:id="@+id/overviewCanteenName"
-            android:layout_width="match_parent"
+        <LinearLayout
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="Canteen Name" />
+            android:weightSum="3">
 
-        <TextView
-            android:id="@+id/overviewCanteenAddress"
-            android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/labelCanteenName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/canteen_name"
+                android:paddingBottom="@dimen/padding_bottom_medium"
+                android:textSize="@dimen/font_size_small"
+                android:layout_weight="1"
+                />
+            <TextView
+                android:id="@+id/overviewCanteenName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="@string/canteen_name"
+                android:textSize="@dimen/font_size_medium"
+                android:layout_weight="2"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="Canteen Address" />
+            android:weightSum="3">
 
-        <TextView
-            android:id="@+id/overviewCanteenWebsite"
-            android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/labelCanteenAddress"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/canteen_address"
+                android:paddingBottom="@dimen/padding_bottom_medium"
+                android:textSize="@dimen/font_size_small"
+                android:layout_weight="1"
+                />
+            <TextView
+                android:id="@+id/overviewCanteenAddress"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="@string/canteen_address"
+                android:textSize="@dimen/font_size_medium"
+                android:layout_weight="2"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="Canteen Website" />
+            android:weightSum="3">
 
-        <TextView
-            android:id="@+id/overviewCanteenPhone"
-            android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/labelCanteenWebsite"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/canteen_website"
+                android:paddingBottom="@dimen/padding_bottom_medium"
+                android:textSize="@dimen/font_size_small"
+                android:layout_weight="1" />
+            <TextView
+                android:id="@+id/overviewCanteenWebsite"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="@string/canteen_website"
+                android:textSize="@dimen/font_size_medium"
+                android:layout_weight="2"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="Canteen Phone" />
+            android:weightSum="3">
 
+            <TextView
+                android:id="@+id/labelCanteenPhone"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/canteen_phone"
+                android:paddingBottom="@dimen/padding_bottom_medium"
+                android:textSize="@dimen/font_size_small"
+                android:layout_weight="1" />
+            <TextView
+                android:id="@+id/overviewCanteenPhone"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="@string/canteen_phone"
+                android:textSize="@dimen/font_size_medium"
+                android:layout_weight="2"/>
+        </LinearLayout>
 
-        <TextView
-            android:id="@+id/overviewCanteenWaitingTime"
-            android:layout_width="match_parent"
+        <LinearLayout
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="Canteen WaitingTime" />
+            android:weightSum="3">
 
-        <TextView
-            android:id="@+id/overviewCanteenDish"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Canteen Dish" />
+            <TextView
+                android:id="@+id/labelCanteenWaitingTime"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/canteen_waiting_time"
+                android:paddingBottom="@dimen/padding_bottom_medium"
+                android:textSize="@dimen/font_size_small"
+                android:layout_weight="1" />
+            <TextView
+                android:id="@+id/overviewCanteenWaitingTime"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="@string/canteen_waiting_time"
+                android:textSize="@dimen/font_size_medium"
+                android:layout_weight="2"/>
+        </LinearLayout>
 
-        <TextView
-            android:id="@+id/overviewCanteenDishPrice"
-            android:layout_width="match_parent"
+        <LinearLayout
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="Canteen DishPrice" />
+            android:weightSum="3">
+
+            <TextView
+                android:id="@+id/labelCanteenDish"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/canteen_dish"
+                android:paddingBottom="@dimen/padding_bottom_medium"
+                android:textSize="@dimen/font_size_small"
+                android:layout_weight="1" />
+            <TextView
+                android:id="@+id/overviewCanteenDish"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="@string/canteen_dish"
+                android:textSize="@dimen/font_size_medium"
+                android:layout_weight="2"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="3">
+
+            <TextView
+                android:id="@+id/labelCanteenDishPrice"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/dish_price"
+                android:paddingBottom="@dimen/padding_bottom_medium"
+                android:textSize="@dimen/font_size_small"
+                android:layout_weight="1" />
+            <TextView
+                android:id="@+id/overviewCanteenDishPrice"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="@string/dish_price"
+                android:textSize="@dimen/font_size_medium"
+                android:layout_weight="2"/>
+        </LinearLayout>
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/fcwReviews"
