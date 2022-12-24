@@ -44,11 +44,12 @@ class AdminLoginActivity : AppCompatActivity() {
             .onSuccess { authToken ->
                 // save token - gilt 24 stunden - imemr wieder notwendig
                 (application as CanteenCheckerAdminApplication).authenticationToken = authToken
-                // return to calling activity
-                //setResult(Activity.RESULT_OK) // ok oder failed
-                var newIntent = Intent(this@AdminLoginActivity, CanteenDetailActivity::class.java)
-                startActivity(newIntent)
+                //var newIntent = Intent(this@AdminLoginActivity, CanteenDetailActivity::class.java)
+                //startActivity(newIntent)
                 //finish()
+                //startActivity(CanteenOverviewActivity.intent(this@AdminLoginActivity))
+                setResult(Activity.RESULT_OK)
+                finish()
             }
             .onFailure {
                 edtPassword.text = null

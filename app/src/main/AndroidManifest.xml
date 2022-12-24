@@ -35,7 +35,8 @@
         </activity>
         <activity
             android:name=".ui.AdminLoginActivity"
-            android:exported="false">
+            android:exported="false"
+            android:noHistory="true">
 
             <meta-data
                 android:name="android.app.lib_name"

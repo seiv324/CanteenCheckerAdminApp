@@ -4,9 +4,8 @@ import android.app.Application
 import com.google.firebase.messaging.FirebaseMessaging
 
 class CanteenCheckerAdminApplication : Application() {
-    var authenticationToken: String? = null
-    var canteenId : String? = null
-    // TODO: Prüfen ob Token noch gültig ist -> function die null oder token retourniert
+    var authenticationToken: String = ""
+    var canteenId : String = ""
 
     override fun onCreate() {
         super.onCreate()

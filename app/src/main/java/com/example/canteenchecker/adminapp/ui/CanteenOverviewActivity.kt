@@ -1,15 +1,9 @@
 package com.example.canteenchecker.adminapp.ui
 
-import android.Manifest
 import android.app.Activity
 import android.app.AlertDialog
-import android.content.ActivityNotFoundException
 import android.content.Context
 import android.content.Intent
-import android.content.pm.PackageManager
-import android.location.Geocoder
-import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -18,21 +12,18 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.example.canteenchecker.adminapp.*
 import com.example.canteenchecker.adminapp.api.AdminApiFactory
 import com.example.canteenchecker.adminapp.ui.ReviewFragment.Companion.addReviewsFragment
-import com.google.android.gms.maps.CameraUpdateFactory
-import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.MarkerOptions
 import kotlinx.coroutines.launch
-import java.net.URLEncoder
-import java.nio.charset.StandardCharsets
 
 class CanteenOverviewActivity : AppCompatActivity() {
     companion object {
         fun intent(context: Context) =
             Intent(context, CanteenOverviewActivity::class.java)
+        private var currentOptionsMenu : Menu? = null
     }
 
     // Create receiver since it is a abstract class
@@ -58,8 +49,8 @@ class CanteenOverviewActivity : AppCompatActivity() {
     private lateinit var txvDishPrice: TextView
 
     // buttons
-    private lateinit var btnToUpdateCanteen : Button
-    private lateinit var btnShowReviews : Button
+    //private lateinit var btnToUpdateCanteen : Button
+    //private lateinit var btnShowReviews : Button
     private lateinit var btnUpdateDish : Button
     private lateinit var btnUpdateWaitingTime : Button
 
@@ -67,7 +58,7 @@ class CanteenOverviewActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_canteen_overview)
 
-        authenticationToken = (application as CanteenCheckerAdminApplication).authenticationToken ?: ""
+        authenticationToken = (application as CanteenCheckerAdminApplication).authenticationToken
         currentCanteenId = ""
 
         txvName = findViewById(R.id.overviewCanteenName)
@@ -78,11 +69,13 @@ class CanteenOverviewActivity : AppCompatActivity() {
         txvDish = findViewById(R.id.overviewCanteenDish)
         txvDishPrice = findViewById(R.id.overviewCanteenDishPrice)
 
-        btnToUpdateCanteen = findViewById(R.id.goToUpdateCanteenButton)
-        btnToUpdateCanteen.setOnClickListener{ startActivity(UpdateCanteenDetailsActivity.intent(this)) }
+        //btnToUpdateCanteen = findViewById(R.id.goToUpdateCanteenButton)
+        //btnToUpdateCanteen.setOnClickListener{ startActivity(UpdateCanteenDetailsActivity.intent(this)) }
+        //btnToUpdateCanteen.setOnClickListener{ navigateToUpdateCanteen() }
 
-        btnShowReviews = findViewById(R.id.showReviews)
-        btnShowReviews.setOnClickListener{ startActivity(ReviewsActivity.intent(this)) }
+        //btnShowReviews = findViewById(R.id.showReviews)
+        //btnShowReviews.setOnClickListener{ startActivity(ReviewsActivity.intent(this)) }
+        //btnShowReviews.setOnClickListener{ navigateToReviews() }
 
         btnUpdateDish = findViewById(R.id.updateDishButton)
         btnUpdateDish.setOnClickListener{ updateDishDetails() }
@@ -103,15 +96,26 @@ class CanteenOverviewActivity : AppCompatActivity() {
         unregisterCanteenChangedBroadcastReceiver(receiver)
     }
 
+    override fun onStart() {
+        super.onStart()
+        if(authenticationToken.isBlank()){
+            authenticationToken = (application as CanteenCheckerAdminApplication).authenticationToken
+        }
+        if(currentOptionsMenu != null && currentCanteenId.isBlank()){
+            this.invalidateOptionsMenu()
+            onPrepareOptionsMenu(currentOptionsMenu)
+        }
+    }
+
     private var resultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
         if (result.resultCode == Activity.RESULT_OK) {
-            authenticationToken = (application as CanteenCheckerAdminApplication).authenticationToken ?: ""
+            authenticationToken = (application as CanteenCheckerAdminApplication).authenticationToken
             loadCanteenDetails()
         }
     }
 
     private fun verifyToken() {
-        if(authenticationToken == null || authenticationToken.isBlank()) {
+        if(authenticationToken.isBlank()) {
             resultLauncher.launch(AdminLoginActivity.intent(this@CanteenOverviewActivity))
         } else {
             loadCanteenDetails()
@@ -119,7 +123,7 @@ class CanteenOverviewActivity : AppCompatActivity() {
     }
 
     private fun loadCanteenDetails() = lifecycleScope.launch{
-        if(authenticationToken != null && authenticationToken.isNotBlank()){
+        if(authenticationToken.isNotBlank()){
             AdminApiFactory.createAdminApiInstance().getCanteen(authenticationToken)
                 .onFailure {
                     Toast.makeText(this@CanteenOverviewActivity, R.string.message_canteen_not_found, Toast.LENGTH_LONG
@@ -131,14 +135,20 @@ class CanteenOverviewActivity : AppCompatActivity() {
                         currentCanteenId = currentCanteen.id
                         (application as CanteenCheckerAdminApplication).canteenId = currentCanteenId
 
+                        // Reload Options menu
+                        if(currentOptionsMenu != null){
+                            this@CanteenOverviewActivity.invalidateOptionsMenu()
+                            onPrepareOptionsMenu(currentOptionsMenu)
+                        }
+
                         supportFragmentManager.beginTransaction().setReorderingAllowed(true)
                             .addReviewsFragment(R.id.fcwReviews, authenticationToken, currentCanteenId).commit()
                     }
 
                     txvName.text = currentCanteen.name
                     txvLocation.text = currentCanteen.location
-                    txvWebsite.text = currentCanteen.phoneNumber
-                    txvPhone.text = currentCanteen.website
+                    txvWebsite.text = currentCanteen.website
+                    txvPhone.text = currentCanteen.phoneNumber
                     txvWaitingTime.text = currentCanteen.waitingTime.toString()
                     txvDish.text = currentCanteen.dish
                     txvDishPrice.text = currentCanteen.dishPrice.toString()
@@ -200,17 +210,24 @@ class CanteenOverviewActivity : AppCompatActivity() {
 
     // Prepare Options Menu
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        currentOptionsMenu = menu
         menuInflater.inflate(R.menu.menu_activity_admin_canteen_details, menu)
         return super.onCreateOptionsMenu(menu)
     }
 
     override fun onPrepareOptionsMenu(menu: Menu?): Boolean {
         menu?.findItem(R.id.mniLogout)?.isVisible = authenticationToken.isNotBlank()
+        menu?.findItem(R.id.mniOverview)?.isVisible = false // true
+        menu?.findItem(R.id.mniDetails)?.isVisible = currentCanteenId.isNotBlank()
+        menu?.findItem(R.id.mniReviews)?.isVisible = currentCanteenId.isNotBlank()
         return super.onPrepareOptionsMenu(menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean  =  when(item.itemId){
         R.id.mniLogout -> logoutUser().let { true }
+        //R.id.mniOverview -> logoutUser().let { true }
+        R.id.mniDetails -> navigateToUpdateCanteen().let { true }
+        R.id.mniReviews -> navigateToReviews().let { true }
         else -> super.onOptionsItemSelected(item)
     }
 
@@ -219,5 +236,13 @@ class CanteenOverviewActivity : AppCompatActivity() {
             (application as CanteenCheckerAdminApplication).authenticationToken = ""
             startActivity(AdminLoginActivity.intent(this))
         }
+    }
+
+    private fun navigateToUpdateCanteen(){
+        startActivity(UpdateCanteenDetailsActivity.intent(this))
+    }
+
+    private fun navigateToReviews(){
+        startActivity(ReviewsActivity.intent(this))
     }
 }
