@@ -93,8 +93,10 @@
             android:name="com.google.android.gms.maps.SupportMapFragment"
             android:layout_width="match_parent"
             android:layout_height="@dimen/height_canteen_details_map"
-            android:layout_marginTop="@dimen/distance_small"
-            android:tag="@string/tag_map_fragment" />
+            android:tag="@string/tag_map_fragment"
+            android:padding="@dimen/padding_map_fragment"
+            android:layout_margin="@dimen/margin_map_fragment"
+            android:background="@drawable/custom_fragment_border"/>
 
 
     </LinearLayout>

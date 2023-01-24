@@ -33,6 +33,8 @@
         android:layout_margin="32dp"
         android:stepSize="0.5"
         android:valueFrom="0.0"
-        android:valueTo="100.0"/>
+        android:valueTo="100.0"
+        app:tickVisible="false"
+        app:labelBehavior="visible" />
 
 </LinearLayout>

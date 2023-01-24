@@ -14,42 +14,27 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <!--
-        <Button
-            android:id="@+id/goToUpdateCanteenButton"
-            android:layout_width="match_parent"
+        <LinearLayout
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="Goto Update Canteen Details" />
-        -->
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:weightSum="2">
-        <Button
-            android:id="@+id/updateDishButton"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:text="@string/update_dish_details"
-            android:layout_weight="1"
-            android:layout_margin="@dimen/button_margin_small"
-            style="?android:attr/buttonBarButtonStyle" />
+            android:weightSum="2">
+            <Button
+                android:id="@+id/updateDishButton"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:text="@string/update_dish_details"
+                android:layout_weight="1"
+                android:layout_margin="@dimen/button_margin_small"
+                style="?android:attr/buttonBarButtonStyle" />
 
-        <Button
-            android:id="@+id/updateWaitingTimeButton"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:text="@string/update_waiting_time"
-            android:layout_weight="1"
-            style="?android:attr/buttonBarButtonStyle"
-            />
-    </LinearLayout>
-        <!--
-        <Button
-            android:id="@+id/showReviews"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Show Reviews" />
-        -->
+            <Button
+                android:id="@+id/updateWaitingTimeButton"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:text="@string/update_waiting_time"
+                android:layout_weight="1"
+                style="?android:attr/buttonBarButtonStyle" />
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="fill_parent"
@@ -135,7 +120,8 @@
                 android:text="@string/canteen_phone"
                 android:paddingBottom="@dimen/padding_bottom_medium"
                 android:textSize="@dimen/font_size_small"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:paddingRight="@dimen/distance_small"/>
             <TextView
                 android:id="@+id/overviewCanteenPhone"
                 android:layout_width="0dp"
@@ -158,7 +144,8 @@
                 android:text="@string/canteen_waiting_time"
                 android:paddingBottom="@dimen/padding_bottom_medium"
                 android:textSize="@dimen/font_size_small"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:paddingRight="@dimen/distance_small"/>
             <TextView
                 android:id="@+id/overviewCanteenWaitingTime"
                 android:layout_width="0dp"
@@ -218,7 +205,8 @@
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/fcwReviews"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:padding="@dimen/padding_fragment"/>
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

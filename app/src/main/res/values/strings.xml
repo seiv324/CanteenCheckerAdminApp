@@ -18,7 +18,7 @@
     <string name="dialog_update_dish_positive_button">Update Dish</string>
     <string name="dish_update_failure">Dish could not be updated</string>
     <string name="dish_update_success">Dish successfully updated</string>
-    <string name="waitingtime_text">Current Waiting Time</string>
+    <string name="waitingtime_text">Current Waiting Time Minutes</string>
     <string name="dialog_update_waiting_time_title">Update Waiting Time</string>
     <string name="waitingtime_update_failed">Waiting Time could not be updated</string>
     <string name="waitingtime_update_sucess">Waiting Time successfully updated</string>
@@ -35,12 +35,12 @@
     <string name="overview">Overview</string>
     <string name="update_dish_details">Update Dish Details</string>
     <string name="update_waiting_time">Update Waiting Time</string>
-    <string name="canteen_name">Canteen Name</string>
-    <string name="canteen_address">Canteen Address</string>
-    <string name="canteen_website">Canteen Website</string>
-    <string name="canteen_phone">Canteen Phone</string>
-    <string name="canteen_waiting_time">Canteen WaitingTime</string>
-    <string name="canteen_dish">Canteen Dish</string>
+    <string name="canteen_name">Name</string>
+    <string name="canteen_address">Address</string>
+    <string name="canteen_website">Website</string>
+    <string name="canteen_phone">Phonenumber</string>
+    <string name="canteen_waiting_time">Waiting Time in minutes</string>
+    <string name="canteen_dish">Dish</string>
     <string name="dish_price">Dish Price</string>
     <string name="update_canteen_details">Update Canteen Details</string>
 </resources>

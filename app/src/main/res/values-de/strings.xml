@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">CanteenCheckerAdminApp</string>
+    <string name="app_name">Kantinen Checker Admin App</string>
     <string name="hint_user_name">Username</string>
     <string name="hint_password">Passwort</string>
     <string name="text_log_in">Login</string>
     <string name="message_login_failed">Login fehlgeschlagen, bitte versuchen Sie es erneut!</string>
-    <string name="message_canteen_not_found">Cantine konnte nicht gefunden werden</string>
+    <string name="message_canteen_not_found">Kantine konnte nicht gefunden werden</string>
     <string name="hint_filter">Filter</string>
     <string name="text_search">Suche</string>
     <string name="message_loading_reviews_failed">Reviews konnten nicht geladen werden</string>
     <string name="message_delete_review_failed">Review konnte nicht gelöscht werden</string>
     <string name="message_delete_review_success">Review wurde gelöscht</string>
-    <string name="message_update_canteen_failure">Canteen Update fehlgeschlagen</string>
-    <string name="message_update_canteen_success">Canteen wurde aktualisisert</string>
+    <string name="message_update_canteen_failure">Kantinen Update fehlgeschlagen</string>
+    <string name="message_update_canteen_success">Kantine wurde aktualisisert</string>
     <string name="dish_label">Gericht Name</string>
     <string name="text_five">5</string>
     <string name="text_four">4</string>
@@ -24,7 +24,7 @@
     <string name="dialog_update_dish_positive_button">Gericht aktualisieren</string>
     <string name="dish_update_failure">Gericht konnte nicht aktualisiert werden</string>
     <string name="dish_update_success">Gericht erfolgreich aktualisiert</string>
-    <string name="waitingtime_text">Wartezeit</string>
+    <string name="waitingtime_text">Wartezeit in Minuten</string>
     <string name="dialog_update_waiting_time_title">Wartezeit aktualisieren</string>
     <string name="waitingtime_update_failed">Wartezeit konnte nicht aktualisisert werden</string>
     <string name="waitingtime_update_sucess">Wartezeit erfolgreich aktualisiert</string>
@@ -36,12 +36,12 @@
     <string name="reviews">Reviews</string>
     <string name="update_dish_details">Gericht aktualisieren</string>
     <string name="update_waiting_time">Wartezeit aktualisieren</string>
-    <string name="canteen_name">Cantinen Name</string>
-    <string name="canteen_address">Cantinen Adresse</string>
-    <string name="canteen_website">Cantinen Website</string>
-    <string name="canteen_phone">Cantinen Telefonnummer</string>
-    <string name="canteen_waiting_time">Cantinen Wartezeit</string>
+    <string name="canteen_name">Name</string>
+    <string name="canteen_address">Adresse</string>
+    <string name="canteen_website">Website</string>
+    <string name="canteen_phone">Telefonnummer</string>
+    <string name="canteen_waiting_time">Wartezeit in Minuten</string>
     <string name="canteen_dish">Gericht</string>
     <string name="dish_price">Preis des Gerichtes</string>
-    <string name="update_canteen_details">Cantinen Details aktualisieren</string>
+    <string name="update_canteen_details">Kantinen Details aktualisieren</string>
 </resources>
